@@ -1,0 +1,11 @@
+{
+  "name": "Topic Excerpts",
+  "about_url": "https://meta.discourse.org/t/topic-list-excerpts-theme-component/151520",
+  "license_url": "https://github.com/discourse/discourse-topic-excerpts/blob/master/LICENSE",
+  "component": true,
+  "authors": "David Taylor",
+  "modifiers": {
+    "serialize_topic_excerpts": true
+  },
+  "minimum_discourse_version": "2.5.0.beta2"
+}
