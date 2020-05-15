@@ -1,3 +1,5 @@
 en: 
   theme_metadata: 
     description: Display excerpts in topic lists
+    settings:
+      enabled_categories: Enable excerpts in specific categories. Leave blank for all categories.

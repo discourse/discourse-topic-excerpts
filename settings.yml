@@ -1,2 +1,6 @@
 show_excerpts_mobile: true
 show_excerpts_desktop: true
+enabled_categories:
+  type: list
+  list_type: category
+  default: ""

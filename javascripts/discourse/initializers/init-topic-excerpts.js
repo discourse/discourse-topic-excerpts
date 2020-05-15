@@ -1,5 +1,11 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed from "discourse-common/utils/decorators";
+import { inject as service } from "@ember/service";
+
+const enabledCategories = settings.enabled_categories
+  .split("|")
+  .map((id) => parseInt(id, 10))
+  .filter((id) => id);
 
 export default {
   name: "topic-thumbnails-init",
@@ -11,13 +17,27 @@ export default {
     const site = api.container.lookup("site:main");
 
     api.modifyClass("component:topic-list-item", {
-      @discourseComputed
-      expandPinned() {
-        const shouldOverride = site.mobileView
+      excerptsRouter: service("router"),
+
+      @discourseComputed(
+        "excerptsRouter.currentRouteName",
+        "excerptsRouter.currentRoute.attributes.category.id"
+      )
+      excerptsViewingCategoryId(currentRouteName, categoryId) {
+        if (!currentRouteName.match(/^discovery\./)) return;
+        return categoryId;
+      },
+
+      @discourseComputed("excerptsViewingCategoryId")
+      expandPinned(viewingCategory) {
+        const overrideInCategory =
+          enabledCategories.length === 0 ||
+          enabledCategories.includes(viewingCategory);
+        const overrideOnDevice = site.mobileView
           ? settings.show_excerpts_mobile
           : settings.show_excerpts_desktop;
 
-        return shouldOverride ? true : this._super();
+        return overrideInCategory && overrideOnDevice ? true : this._super();
       },
     });
   },
