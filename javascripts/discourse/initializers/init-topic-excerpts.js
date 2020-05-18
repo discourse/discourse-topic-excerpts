@@ -8,7 +8,7 @@ const enabledCategories = settings.enabled_categories
   .filter((id) => id);
 
 export default {
-  name: "topic-thumbnails-init",
+  name: "topic-excerpts-init",
   initialize() {
     withPluginApi("0.8.7", (api) => this.initWithApi(api));
   },
