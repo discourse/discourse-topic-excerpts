@@ -7,6 +7,8 @@ const enabledCategories = settings.enabled_categories
   .map((id) => parseInt(id, 10))
   .filter((id) => id);
 
+const enabledTags = settings.enabled_tags.split("|");
+
 export default {
   name: "topic-excerpts-init",
   initialize() {
@@ -28,16 +30,31 @@ export default {
         return categoryId;
       },
 
-      @discourseComputed("excerptsViewingCategoryId")
-      expandPinned(viewingCategory) {
-        const overrideInCategory =
-          enabledCategories.length === 0 ||
-          enabledCategories.includes(viewingCategory);
+      @discourseComputed(
+        "excerptsRouter.currentRouteName",
+        "excerptsRouter.currentRoute.attributes.id"
+      )
+      excerptsViewingTag(currentRouteName, tagId) {
+        if (!currentRouteName.match(/^tag\.show/)) return;
+        return tagId;
+      },
+
+      @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
+      expandPinned(viewingCategory, viewingTag) {
+        const overrideEverywhere =
+          enabledCategories.length === 0 && enabledTags.length === 0;
+
+        const overrideInCategory = enabledCategories.includes(viewingCategory);
+        const overrideInTag = enabledTags.includes(viewingTag);
+
         const overrideOnDevice = site.mobileView
           ? settings.show_excerpts_mobile
           : settings.show_excerpts_desktop;
 
-        return overrideInCategory && overrideOnDevice ? true : this._super();
+        return (overrideEverywhere || overrideInTag || overrideInCategory) &&
+          overrideOnDevice
+          ? true
+          : this._super();
       },
     });
   },
