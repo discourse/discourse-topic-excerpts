@@ -1,5 +1,6 @@
-en: 
-  theme_metadata: 
+en:
+  theme_metadata:
     description: Display excerpts in topic lists
     settings:
-      enabled_categories: Enable excerpts in specific categories. Leave blank for all categories.
+      enabled_categories: Enable excerpts in specific categories. Leave both categories and tags blank to show excerpts on all routes.
+      enabled_tags: Enable excerpts in specific tags. Leave both categories and tags blank to show excerpts on all routes.

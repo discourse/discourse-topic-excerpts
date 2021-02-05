@@ -4,3 +4,7 @@ enabled_categories:
   type: list
   list_type: category
   default: ""
+enabled_tags:
+  type: list
+  list_type: simple
+  default: ""
