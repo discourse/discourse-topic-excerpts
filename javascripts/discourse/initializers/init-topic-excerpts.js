@@ -7,7 +7,7 @@ const enabledCategories = settings.enabled_categories
   .map((id) => parseInt(id, 10))
   .filter((id) => id);
 
-const enabledTags = settings.enabled_tags.split("|");
+const enabledTags = settings.enabled_tags.split("|").filter((tag) => tag);
 
 export default {
   name: "topic-excerpts-init",
