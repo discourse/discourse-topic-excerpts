@@ -32,11 +32,12 @@ export default {
 
       @discourseComputed(
         "excerptsRouter.currentRouteName",
-        "excerptsRouter.currentRoute.attributes.id"
+        "excerptsRouter.currentRoute.attributes.id", // For discourse instances earlier than https://github.com/discourse/discourse/commit/f7b5ff39cf
+        "excerptsRouter.currentRoute.attributes.tag.id"
       )
-      excerptsViewingTag(currentRouteName, tagId) {
+      excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
         if (!currentRouteName.match(/^tag\.show/)) return;
-        return tagId;
+        return tagId || legacyTagId;
       },
 
       @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
