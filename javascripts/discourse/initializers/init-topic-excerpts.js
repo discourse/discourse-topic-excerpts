@@ -11,6 +11,7 @@ const enabledTags = settings.enabled_tags.split("|").filter((tag) => tag);
 
 export default {
   name: "topic-excerpts-init",
+
   initialize() {
     withPluginApi("0.8.7", (api) => this.initWithApi(api));
   },
@@ -19,6 +20,7 @@ export default {
     const site = api.container.lookup("site:main");
 
     api.modifyClass("component:topic-list-item", {
+      pluginId: "discourse-topic-excerpts",
       excerptsRouter: service("router"),
 
       @discourseComputed(
