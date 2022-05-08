@@ -26,7 +26,9 @@ export default {
         "excerptsRouter.currentRoute.attributes.category.id"
       )
       excerptsViewingCategoryId(currentRouteName, categoryId) {
-        if (!currentRouteName.match(/^discovery\./)) return;
+        if (!currentRouteName.match(/^discovery\./)) {
+          return;
+        }
         return categoryId;
       },
 
@@ -36,7 +38,9 @@ export default {
         "excerptsRouter.currentRoute.attributes.tag.id"
       )
       excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
-        if (!currentRouteName.match(/^tag\.show/)) return;
+        if (!currentRouteName.match(/^tag\.show/)) {
+          return;
+        }
         return tagId || legacyTagId;
       },
 
