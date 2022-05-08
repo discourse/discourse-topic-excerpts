@@ -11,6 +11,7 @@ const enabledTags = settings.enabled_tags.split("|").filter((tag) => tag);
 
 export default {
   name: "topic-excerpts-init",
+
   initialize() {
     withPluginApi("0.8.7", (api) => this.initWithApi(api));
   },
@@ -19,6 +20,7 @@ export default {
     const site = api.container.lookup("site:main");
 
     api.modifyClass("component:topic-list-item", {
+      pluginId: "discourse-topic-excerpts",
       excerptsRouter: service("router"),
 
       @discourseComputed(
@@ -26,7 +28,9 @@ export default {
         "excerptsRouter.currentRoute.attributes.category.id"
       )
       excerptsViewingCategoryId(currentRouteName, categoryId) {
-        if (!currentRouteName.match(/^discovery\./)) return;
+        if (!currentRouteName.match(/^discovery\./)) {
+          return;
+        }
         return categoryId;
       },
 
@@ -36,7 +40,9 @@ export default {
         "excerptsRouter.currentRoute.attributes.tag.id"
       )
       excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
-        if (!currentRouteName.match(/^tag\.show/)) return;
+        if (!currentRouteName.match(/^tag\.show/)) {
+          return;
+        }
         return tagId || legacyTagId;
       },
 

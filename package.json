@@ -1,0 +1,10 @@
+{
+  "name": "discourse-topic-excerpts",
+  "version": "1.00.",
+  "repository": "https://github.com/discourse/discourse-topic-excerpts",
+  "author": "Discourse",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-discourse": "^3.1.0"
+  }
+}
