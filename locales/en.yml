@@ -1,6 +1,7 @@
 en:
   theme_metadata:
-    description: Display excerpts in topic lists
+    description: Display excerpts in topic lists & docs.
     settings:
       enabled_categories: Enable excerpts in specific categories. Leave both categories and tags blank to show excerpts on all routes.
       enabled_tags: Enable excerpts in specific tags. Leave both categories and tags blank to show excerpts on all routes.
+      enable_docs: Enable excerpts in the docs plugin.

@@ -46,6 +46,15 @@ export default {
         return tagId || legacyTagId;
       },
 
+      @discourseComputed(
+        "excerptsRouter.currentRouteName"
+      )
+      excerptsViewingDocs(currentRouteName) {
+        if (currentRouteName.match(/^docs\./)) {
+          return true;
+        }
+      },
+
       @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
       expandPinned(viewingCategory, viewingTag) {
         const overrideEverywhere =
