@@ -1,7 +1,7 @@
+import { getOwner } from "@ember/application";
 import { service } from "@ember/service";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed from "discourse-common/utils/decorators";
-import { getOwner } from "@ember/application";
 
 const enabledCategories = settings.enabled_categories
   .split("|")
