@@ -1,6 +1,7 @@
 import { service } from "@ember/service";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed from "discourse-common/utils/decorators";
+import { getOwner } from "@ember/application";
 
 const enabledCategories = settings.enabled_categories
   .split("|")
@@ -21,7 +22,6 @@ export default {
       pluginId: "discourse-topic-excerpts",
 
       excerptsRouter: service("router"),
-      site: service(),
 
       @discourseComputed(
         "excerptsRouter.currentRouteName",
@@ -54,7 +54,8 @@ export default {
         const overrideInCategory = enabledCategories.includes(viewingCategory);
         const overrideInTag = enabledTags.includes(viewingTag);
 
-        const overrideOnDevice = this.site.mobileView
+        const overrideOnDevice = getOwner(this).lookup("service:site")
+          .mobileView
           ? settings.show_excerpts_mobile
           : settings.show_excerpts_desktop;
 
