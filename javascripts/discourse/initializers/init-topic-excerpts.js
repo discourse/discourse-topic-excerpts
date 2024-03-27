@@ -1,6 +1,6 @@
+import { service } from "@ember/service";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed from "discourse-common/utils/decorators";
-import { inject as service } from "@ember/service";
 
 const enabledCategories = settings.enabled_categories
   .split("|")
@@ -17,7 +17,7 @@ export default {
   },
 
   initWithApi(api) {
-    const site = api.container.lookup("site:main");
+    const site = api.container.lookup("service:site");
 
     api.modifyClass("component:topic-list-item", {
       pluginId: "discourse-topic-excerpts",
