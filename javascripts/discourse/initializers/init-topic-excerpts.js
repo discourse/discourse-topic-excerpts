@@ -17,11 +17,11 @@ export default {
   },
 
   initWithApi(api) {
-    const site = api.container.lookup("site:main");
-
     api.modifyClass("component:topic-list-item", {
       pluginId: "discourse-topic-excerpts",
+
       excerptsRouter: service("router"),
+      site: service(),
 
       @discourseComputed(
         "excerptsRouter.currentRouteName",
@@ -54,7 +54,7 @@ export default {
         const overrideInCategory = enabledCategories.includes(viewingCategory);
         const overrideInTag = enabledTags.includes(viewingTag);
 
-        const overrideOnDevice = site.mobileView
+        const overrideOnDevice = this.site.mobileView
           ? settings.show_excerpts_mobile
           : settings.show_excerpts_desktop;
 
