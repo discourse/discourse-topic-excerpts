@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 de:
+  theme_metadata:
+    description: Auszüge in Themenlisten anzeigen
+    settings:
+      enabled_categories: Aktiviere Auszüge in bestimmten Kategorien. Wähle weder Kategorien noch Schlagwörter aus, um Auszüge auf allen Routen anzuzeigen.
+      enabled_tags: Aktiviere Auszüge bei bestimmten Schlagwörtern. Wähle weder Kategorien noch Schlagwörter aus, um Auszüge auf allen Routen anzuzeigen.
