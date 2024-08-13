@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 it:
+  theme_metadata:
+    description: Visualizza gli estratti negli elenchi degli argomenti
+    settings:
+      enabled_categories: Abilita gli estratti in categorie specifiche. Lascia sia le categorie che i le etichette vuote per mostrare gli estratti su tutti i percorsi.
+      enabled_tags: Abilita gli estratti in etichette specifiche. Lascia sia le categorie che le etichette vuote per mostrare gli estratti su tutti i percorsi.

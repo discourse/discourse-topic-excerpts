@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 fr:
+  theme_metadata:
+    description: Afficher des extraits dans les listes de sujets
+    settings:
+      enabled_categories: Activez les extraits dans des catégories spécifiques. Laissez les catégories et les étiquettes vides pour afficher des extraits de tous les itinéraires.
+      enabled_tags: Activez les extraits dans des étiquettes spécifiques. Laissez les catégories et les étiquettes vides pour afficher des extraits de tous les itinéraires.

@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 es:
+  theme_metadata:
+    description: Mostrar extractos en las listas de temas
+    settings:
+      enabled_categories: Activa los extractos en categorías específicas. Deja en blanco tanto las categorías como las etiquetas para mostrar extractos en todas las rutas.
+      enabled_tags: Activa los extractos en etiquetas específicas. Deja en blanco tanto las categorías como las etiquetas para mostrar extractos en todas las rutas.

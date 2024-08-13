@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 fi:
+  theme_metadata:
+    description: Näytä lyhennelmät ketjuluetteloissa
+    settings:
+      enabled_categories: Ota lyhennelmät käyttöön tietyillä alueilla. Jätä sekä alueet että tunnisteet tyhjiksi, jos haluat näyttää lyhennelmät kaikilla reiteillä.
+      enabled_tags: Ota lyhennelmät käyttöön tietyillä tunnisteilla. Jätä sekä alueet että tunnisteet tyhjiksi, jos haluat näyttää lyhennelmät kaikilla reiteillä.
