@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 ja:
+  theme_metadata:
+    description: トピックリストに抜粋を表示します
+    settings:
+      enabled_categories: 特定のカテゴリで抜粋を有効にします。すべてのルートで抜粋を表示するには、カテゴリとタグの両方を空白のままにします。
+      enabled_tags: 特定のタグで抜粋を有効にします。すべてのルートで抜粋を表示するには、カテゴリとタグの両方を空白のままにします。

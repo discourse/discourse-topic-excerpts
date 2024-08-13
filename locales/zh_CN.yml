@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  theme_metadata:
+    description: 在话题列表中显示摘录
+    settings:
+      enabled_categories: 在特定类别中启用摘录。将类别和标签留空以显示所有路由的摘录。
+      enabled_tags: 在特定标签中启用摘录。将类别和标签留空以显示所有路由的摘录。
