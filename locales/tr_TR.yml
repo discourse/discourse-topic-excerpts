@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 tr_TR:
+  theme_metadata:
+    description: Konu listelerindeki alıntıları göster
+    settings:
+      enabled_categories: Belirli kategorilerdeki alıntıları etkinleştirin. Tüm rotalardaki alıntıları göstermek için hem kategorileri hem de etiketleri boş bırakın.
+      enabled_tags: Belirli etiketlerdeki alıntıları etkinleştirin. Tüm rotalardaki alıntıları göstermek için hem kategorileri hem de etiketleri boş bırakın.
