@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  theme_metadata:
+    description: Exibir trechos em listas de tópicos
+    settings:
+      enabled_categories: Ative trechos em categorias específicas. Deixe ambas as categorias e etiquetas em branco para mostrar trechos em todas as rotas.
+      enabled_tags: Ative trechos em etiquetas específicas. Deixe ambas as categorias e etiquetas em branco para mostrar trechos em todas as rotas.
