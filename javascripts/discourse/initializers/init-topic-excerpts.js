@@ -1,69 +1,120 @@
 import { getOwner } from "@ember/application";
 import { service } from "@ember/service";
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { withSilencedDeprecations } from "discourse-common/lib/deprecated";
 import discourseComputed from "discourse-common/utils/decorators";
 
 const enabledCategories = settings.enabled_categories
   .split("|")
   .map((id) => parseInt(id, 10))
   .filter((id) => id);
-
 const enabledTags = settings.enabled_tags.split("|").filter((tag) => tag);
 
 export default {
   name: "topic-excerpts-init",
 
   initialize() {
-    withPluginApi("0.8.7", (api) => this.initWithApi(api));
-  },
+    withPluginApi("1.34.0", (api) => {
+      const router = api.container.lookup("service:router");
+      api.registerValueTransformer(
+        "topic-list-item-expand-pinned",
+        ({ value, context }) => {
+          const overrideEverywhere =
+            enabledCategories.length === 0 && enabledTags.length === 0;
+          const overrideInCategory = enabledCategories.includes(
+            excerptsViewingCategoryId(
+              router.currentRouteName,
+              router.currentRoute.attributes.category.id
+            )
+          );
+          const overrideInTag = enabledTags.includes(
+            excerptsViewingTag(
+              router.currentRouteName,
+              router.currentRoute.attributes.id,
+              router.currentRoute.attributes.tag.id
+            )
+          );
+          const overrideOnDevice = context.mobileView
+            ? settings.show_excerpts_mobile
+            : settings.show_excerpts_desktop;
 
-  initWithApi(api) {
-    api.modifyClass("component:topic-list-item", {
-      pluginId: "discourse-topic-excerpts",
-
-      excerptsRouter: service("router"),
-
-      @discourseComputed(
-        "excerptsRouter.currentRouteName",
-        "excerptsRouter.currentRoute.attributes.category.id"
-      )
-      excerptsViewingCategoryId(currentRouteName, categoryId) {
-        if (!currentRouteName.match(/^discovery\./)) {
-          return;
+          if (
+            (overrideEverywhere || overrideInTag || overrideInCategory) &&
+            overrideOnDevice
+          ) {
+            return true;
+          }
+          return value; // Return default value
         }
-        return categoryId;
-      },
+      );
 
-      @discourseComputed(
-        "excerptsRouter.currentRouteName",
-        "excerptsRouter.currentRoute.attributes.id", // For discourse instances earlier than https://github.com/discourse/discourse/commit/f7b5ff39cf
-        "excerptsRouter.currentRoute.attributes.tag.id"
-      )
-      excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
-        if (!currentRouteName.match(/^tag\.show/)) {
-          return;
-        }
-        return tagId || legacyTagId;
-      },
+      // TODO: cvx - remove after the glimmer topic list transition
+      withSilencedDeprecations("discourse.hbr-topic-list-overrides", () => {
+        api.modifyClass("component:topic-list-item", {
+          pluginId: "discourse-topic-excerpts",
 
-      @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
-      expandPinned(viewingCategory, viewingTag) {
-        const overrideEverywhere =
-          enabledCategories.length === 0 && enabledTags.length === 0;
+          excerptsRouter: service("router"),
 
-        const overrideInCategory = enabledCategories.includes(viewingCategory);
-        const overrideInTag = enabledTags.includes(viewingTag);
+          @discourseComputed(
+            "excerptsRouter.currentRouteName",
+            "excerptsRouter.currentRoute.attributes.category.id"
+          )
+          excerptsViewingCategoryId(currentRouteName, categoryId) {
+            if (!currentRouteName.match(/^discovery\./)) {
+              return;
+            }
+            return categoryId;
+          },
 
-        const overrideOnDevice = getOwner(this).lookup("service:site")
-          .mobileView
-          ? settings.show_excerpts_mobile
-          : settings.show_excerpts_desktop;
+          @discourseComputed(
+            "excerptsRouter.currentRouteName",
+            "excerptsRouter.currentRoute.attributes.id", // For discourse instances earlier than https://github.com/discourse/discourse/commit/f7b5ff39cf
+            "excerptsRouter.currentRoute.attributes.tag.id"
+          )
+          excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
+            if (!currentRouteName.match(/^tag\.show/)) {
+              return;
+            }
+            return tagId || legacyTagId;
+          },
 
-        return (overrideEverywhere || overrideInTag || overrideInCategory) &&
-          overrideOnDevice
-          ? true
-          : this._super();
-      },
+          @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
+          expandPinned(viewingCategory, viewingTag) {
+            const overrideEverywhere =
+              enabledCategories.length === 0 && enabledTags.length === 0;
+
+            const overrideInCategory =
+              enabledCategories.includes(viewingCategory);
+            const overrideInTag = enabledTags.includes(viewingTag);
+
+            const overrideOnDevice = getOwner(this).lookup("service:site")
+              .mobileView
+              ? settings.show_excerpts_mobile
+              : settings.show_excerpts_desktop;
+
+            return (overrideEverywhere ||
+              overrideInTag ||
+              overrideInCategory) &&
+              overrideOnDevice
+              ? true
+              : this._super();
+          },
+        });
+      });
     });
   },
+};
+
+const excerptsViewingCategoryId = (currentRouteName, categoryId) => {
+  if (!currentRouteName.match(/^discovery\./)) {
+    return;
+  }
+  return categoryId;
+};
+
+const excerptsViewingTag = (currentRouteName, legacyTagId, tagId) => {
+  if (!currentRouteName.match(/^tag\.show/)) {
+    return;
+  }
+  return tagId || legacyTagId;
 };
