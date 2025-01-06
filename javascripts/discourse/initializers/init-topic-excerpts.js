@@ -22,9 +22,9 @@ export default {
           const overrideEverywhere =
             enabledCategories.length === 0 && enabledTags.length === 0;
           const overrideInCategory = enabledCategories.includes(
-            discovery.category
+            discovery.category?.id
           );
-          const overrideInTag = enabledTags.includes(discovery.tag);
+          const overrideInTag = enabledTags.includes(discovery.tag?.id);
           const overrideOnDevice = context.mobileView
             ? settings.show_excerpts_mobile
             : settings.show_excerpts_desktop;
