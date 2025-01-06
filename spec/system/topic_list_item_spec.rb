@@ -14,7 +14,6 @@ RSpec.describe "Viewing the search banner", type: :system do
   let(:topic_list_page) { PageObjects::Components::TopicList.new }
 
   before do
-    SiteSetting.glimmer_topic_list_mode = "enabled"
     topic.update!(excerpt: "This is expanded text")
     topic_2.update!(excerpt: "This is not expanded text")
   end
@@ -35,6 +34,7 @@ RSpec.describe "Viewing the search banner", type: :system do
     theme.save!
 
     visit("/c/#{category_2.id}") # Visit category not included in enabled_categories setting
+    expect(topic_list_page).to have_topics(count: 1)
     expect(topic_list_page).to have_no_css(
       topic_list_page.topic_list_item_class(topic_2) + " .topic-excerpt",
       text: "This is not expanded text",
@@ -57,6 +57,7 @@ RSpec.describe "Viewing the search banner", type: :system do
     theme.save!
 
     visit("/tag/#{tag_2.name}") # Visit tag included in enabled_tags setting
+    expect(topic_list_page).to have_topics(count: 1)
     expect(topic_list_page).to have_no_css(
       topic_list_page.topic_list_item_class(topic_2) + " .topic-excerpt",
       text: "This is not expanded text",
