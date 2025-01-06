@@ -15,25 +15,16 @@ export default {
 
   initialize() {
     withPluginApi("1.34.0", (api) => {
-      const router = api.container.lookup("service:router");
+      const discovery = api.container.lookup("service:discovery");
       api.registerValueTransformer(
         "topic-list-item-expand-pinned",
         ({ value, context }) => {
           const overrideEverywhere =
             enabledCategories.length === 0 && enabledTags.length === 0;
           const overrideInCategory = enabledCategories.includes(
-            excerptsViewingCategoryId(
-              router.currentRouteName,
-              router.currentRoute.attributes.category.id
-            )
+            discovery.category?.id
           );
-          const overrideInTag = enabledTags.includes(
-            excerptsViewingTag(
-              router.currentRouteName,
-              router.currentRoute.attributes.id,
-              router.currentRoute.attributes.tag.id
-            )
-          );
+          const overrideInTag = enabledTags.includes(discovery.tag?.id);
           const overrideOnDevice = context.mobileView
             ? settings.show_excerpts_mobile
             : settings.show_excerpts_desktop;
@@ -103,18 +94,4 @@ export default {
       });
     });
   },
-};
-
-const excerptsViewingCategoryId = (currentRouteName, categoryId) => {
-  if (!currentRouteName.match(/^discovery\./)) {
-    return;
-  }
-  return categoryId;
-};
-
-const excerptsViewingTag = (currentRouteName, legacyTagId, tagId) => {
-  if (!currentRouteName.match(/^tag\.show/)) {
-    return;
-  }
-  return tagId || legacyTagId;
 };
