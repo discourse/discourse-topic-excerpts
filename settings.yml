@@ -8,3 +8,6 @@ enabled_tags:
   type: list
   list_type: simple
   default: ""
+show_toggle:
+  type: bool
+  default: true
