@@ -46,7 +46,11 @@ export default class ExcerptToggle extends Component {
 
   <template>
     {{#if this.shouldShow}}
-      <button {{on "click" this.toggleExcerpt}} class="excerpt-toggle">
+      <button
+        type="button"
+        {{on "click" this.toggleExcerpt}}
+        class="excerpt-toggle"
+      >
         {{icon this.buttonIcon}}
         <span>{{i18n (themePrefix "show_excerpts")}}</span>
       </button>
