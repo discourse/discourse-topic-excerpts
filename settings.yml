@@ -10,4 +10,4 @@ enabled_tags:
   default: ""
 show_toggle:
   type: bool
-  default: true
+  default: false
