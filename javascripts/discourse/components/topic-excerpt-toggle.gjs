@@ -10,11 +10,6 @@ export default class ExcerptToggle extends Component {
   @service site;
   @service router;
 
-  constructor() {
-    super(...arguments);
-    this.excerptState.excerptClass(this.excerptState.prefersExcerpt);
-  }
-
   get shouldShow() {
     const categoriesRoute =
       this.router.currentRouteName === "discovery.categories";
@@ -28,11 +23,7 @@ export default class ExcerptToggle extends Component {
       this.args.outletArgs?.name === "topic.title" ||
       this.site.mobileView;
 
-    return (
-      this.excerptState.shouldExpandPinned() &&
-      isTopicHeader &&
-      !this.args.outletArgs.bulkSelectEnabled
-    );
+    return isTopicHeader && !this.args.outletArgs.bulkSelectEnabled;
   }
 
   get buttonIcon() {
