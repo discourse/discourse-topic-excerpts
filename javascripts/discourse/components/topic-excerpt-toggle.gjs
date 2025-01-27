@@ -19,8 +19,8 @@ export default class ExcerptToggle extends Component {
     }
 
     const isTopicHeader =
-      this.args.outletArgs?.name === "default" ||
-      this.args.outletArgs?.name === "topic.title" ||
+      this.args.outletArgs.name === "default" ||
+      this.args.outletArgs.name === "topic.title" ||
       this.site.mobileView;
 
     return isTopicHeader && !this.args.outletArgs.bulkSelectEnabled;
