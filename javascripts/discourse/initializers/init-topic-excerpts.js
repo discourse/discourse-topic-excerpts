@@ -31,7 +31,6 @@ export default {
           pluginId: "discourse-topic-excerpts",
 
           excerptsRouter: service("router"),
-          excerptState: service("excerpt-state"),
 
           @discourseComputed(
             "excerptsRouter.currentRouteName",
@@ -56,11 +55,7 @@ export default {
             return tagId || legacyTagId;
           },
 
-          @discourseComputed(
-            "excerptsViewingCategoryId",
-            "excerptsViewingTag",
-            "excerptState.prefersExcerpt"
-          )
+          @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
           expandPinned(viewingCategory, viewingTag, prefersExcerpt) {
             const overrideEverywhere =
               enabledCategories.length === 0 && enabledTags.length === 0;
@@ -78,7 +73,7 @@ export default {
               overrideInTag ||
               overrideInCategory) &&
               overrideOnDevice
-              ? prefersExcerpt
+              ? true
               : this._super();
           },
         });
