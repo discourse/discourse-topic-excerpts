@@ -11,11 +11,18 @@ export default class ExcerptToggle extends Component {
   @service router;
 
   get shouldShow() {
+    if (
+      !this.site.useGlimmerTopicList ||
+      !this.excerptState.shouldApplyOverride
+    ) {
+      return false;
+    }
+
     const categoriesRoute =
       this.router.currentRouteName === "discovery.categories";
 
     if (!settings.show_toggle || categoriesRoute) {
-      return;
+      return false;
     }
 
     const isTopicHeader =
