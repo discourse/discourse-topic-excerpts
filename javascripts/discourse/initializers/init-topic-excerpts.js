@@ -56,7 +56,7 @@ export default {
           },
 
           @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
-          expandPinned(viewingCategory, viewingTag, prefersExcerpt) {
+          expandPinned(viewingCategory, viewingTag) {
             const overrideEverywhere =
               enabledCategories.length === 0 && enabledTags.length === 0;
 
