@@ -1,8 +1,8 @@
 import { getOwner } from "@ember/application";
 import { service } from "@ember/service";
+import discourseComputed from "discourse/lib/decorators";
+import { withSilencedDeprecations } from "discourse/lib/deprecated";
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { withSilencedDeprecations } from "discourse-common/lib/deprecated";
-import discourseComputed from "discourse-common/utils/decorators";
 
 const enabledCategories = settings.enabled_categories
   .split("|")
