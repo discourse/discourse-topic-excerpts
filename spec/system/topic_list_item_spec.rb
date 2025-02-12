@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Viewing the search banner", type: :system do
+RSpec.describe "Viewing topic excerpts", type: :system do
   fab!(:theme) { upload_theme_component }
   fab!(:category)
   fab!(:category_2) { Fabricate(:category) }
@@ -62,5 +62,38 @@ RSpec.describe "Viewing the search banner", type: :system do
       topic_list_page.topic_list_item_class(topic_2) + " .topic-excerpt",
       text: "This is not expanded text",
     )
+  end
+
+  context "when show_toggle setting is disabled" do
+    before do
+      theme.update_setting(:show_toggle, false)
+      theme.save!
+    end
+
+    it "does not show the excerpt toggle button on the topic list" do
+      visit("/c/#{category.id}")
+      expect(page).not_to have_selector(".excerpt-toggle")
+    end
+  end
+
+  context "when show_toggle setting is enabled" do
+    before do
+      theme.update_setting(:show_toggle, true)
+      theme.save!
+    end
+
+    it "shows the excerpt toggle button on the topic list" do
+      visit("/c/#{category.id}")
+
+      expect(page).to have_selector(".excerpt-toggle")
+    end
+
+    it "toggles the excerpt when the button is clicked" do
+      visit("/c/#{category.id}")
+
+      find(".excerpt-toggle").click
+
+      expect(page).not_to have_css(".topic-excerpt")
+    end
   end
 end

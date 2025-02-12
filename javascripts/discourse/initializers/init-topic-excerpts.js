@@ -15,27 +15,13 @@ export default {
 
   initialize() {
     withPluginApi("1.34.0", (api) => {
-      const discovery = api.container.lookup("service:discovery");
       api.registerValueTransformer(
         "topic-list-item-expand-pinned",
-        ({ value, context }) => {
-          const overrideEverywhere =
-            enabledCategories.length === 0 && enabledTags.length === 0;
-          const overrideInCategory = enabledCategories.includes(
-            discovery.category?.id
-          );
-          const overrideInTag = enabledTags.includes(discovery.tag?.id);
-          const overrideOnDevice = context.mobileView
-            ? settings.show_excerpts_mobile
-            : settings.show_excerpts_desktop;
-
-          if (
-            (overrideEverywhere || overrideInTag || overrideInCategory) &&
-            overrideOnDevice
-          ) {
-            return true;
-          }
-          return value; // Return default value
+        ({ value }) => {
+          const excerptState = api.container.lookup("service:excerpt-state");
+          return excerptState.shouldApplyOverride
+            ? excerptState.prefersExcerpt
+            : value;
         }
       );
 
