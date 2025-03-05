@@ -27,56 +27,61 @@ export default {
 
       // TODO: cvx - remove after the glimmer topic list transition
       withSilencedDeprecations("discourse.hbr-topic-list-overrides", () => {
-        api.modifyClass("component:topic-list-item", {
-          pluginId: "discourse-topic-excerpts",
+        api.modifyClass(
+          "component:topic-list-item",
+          (Superclass) =>
+            class extends Superclass {
+              @service("router") excerptsRouter;
 
-          excerptsRouter: service("router"),
+              @discourseComputed(
+                "excerptsRouter.currentRouteName",
+                "excerptsRouter.currentRoute.attributes.category.id"
+              )
+              excerptsViewingCategoryId(currentRouteName, categoryId) {
+                if (!currentRouteName.match(/^discovery\./)) {
+                  return;
+                }
+                return categoryId;
+              }
 
-          @discourseComputed(
-            "excerptsRouter.currentRouteName",
-            "excerptsRouter.currentRoute.attributes.category.id"
-          )
-          excerptsViewingCategoryId(currentRouteName, categoryId) {
-            if (!currentRouteName.match(/^discovery\./)) {
-              return;
+              @discourseComputed(
+                "excerptsRouter.currentRouteName",
+                "excerptsRouter.currentRoute.attributes.id", // For discourse instances earlier than https://github.com/discourse/discourse/commit/f7b5ff39cf
+                "excerptsRouter.currentRoute.attributes.tag.id"
+              )
+              excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
+                if (!currentRouteName.match(/^tag\.show/)) {
+                  return;
+                }
+                return tagId || legacyTagId;
+              }
+
+              @discourseComputed(
+                "excerptsViewingCategoryId",
+                "excerptsViewingTag"
+              )
+              expandPinned(viewingCategory, viewingTag) {
+                const overrideEverywhere =
+                  enabledCategories.length === 0 && enabledTags.length === 0;
+
+                const overrideInCategory =
+                  enabledCategories.includes(viewingCategory);
+                const overrideInTag = enabledTags.includes(viewingTag);
+
+                const overrideOnDevice = getOwner(this).lookup("service:site")
+                  .mobileView
+                  ? settings.show_excerpts_mobile
+                  : settings.show_excerpts_desktop;
+
+                return (overrideEverywhere ||
+                  overrideInTag ||
+                  overrideInCategory) &&
+                  overrideOnDevice
+                  ? true
+                  : super.expandPinned;
+              }
             }
-            return categoryId;
-          },
-
-          @discourseComputed(
-            "excerptsRouter.currentRouteName",
-            "excerptsRouter.currentRoute.attributes.id", // For discourse instances earlier than https://github.com/discourse/discourse/commit/f7b5ff39cf
-            "excerptsRouter.currentRoute.attributes.tag.id"
-          )
-          excerptsViewingTag(currentRouteName, legacyTagId, tagId) {
-            if (!currentRouteName.match(/^tag\.show/)) {
-              return;
-            }
-            return tagId || legacyTagId;
-          },
-
-          @discourseComputed("excerptsViewingCategoryId", "excerptsViewingTag")
-          expandPinned(viewingCategory, viewingTag) {
-            const overrideEverywhere =
-              enabledCategories.length === 0 && enabledTags.length === 0;
-
-            const overrideInCategory =
-              enabledCategories.includes(viewingCategory);
-            const overrideInTag = enabledTags.includes(viewingTag);
-
-            const overrideOnDevice = getOwner(this).lookup("service:site")
-              .mobileView
-              ? settings.show_excerpts_mobile
-              : settings.show_excerpts_desktop;
-
-            return (overrideEverywhere ||
-              overrideInTag ||
-              overrideInCategory) &&
-              overrideOnDevice
-              ? true
-              : this._super();
-          },
-        });
+        );
       });
     });
   },
