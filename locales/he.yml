@@ -10,3 +10,5 @@ he:
     settings:
       enabled_categories: הפעלת מבואות בקטגוריות מסוימות. יש להשאיר את הקטגוריות והתגיות ריק כדי להציג מבואות בכל הנתיבים.
       enabled_tags: הפעלת מבואות בתגיות מסוימות. יש להשאיר את הקטגוריות והתגיות ריק כדי להציג מבואות בכל הנתיבים.
+      show_toggle: כשמבואות גלויות, לאפשר למשתמשים לכבות אותן. נתמך רק ב<a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>רשימת נושאים glimmer<a/>
+  show_excerpts: הצגת מבואות
