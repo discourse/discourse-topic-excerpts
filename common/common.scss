@@ -10,3 +10,9 @@
     margin-top: 0.5em;
   }
 }
+
+.topic-list .topic-list-thumbnail ~ .topic-excerpt {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
