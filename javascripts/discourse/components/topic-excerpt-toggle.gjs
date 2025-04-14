@@ -11,10 +11,7 @@ export default class ExcerptToggle extends Component {
   @service router;
 
   get shouldShow() {
-    if (
-      !this.site.useGlimmerTopicList ||
-      !this.excerptState.shouldApplyOverride
-    ) {
+    if (!this.excerptState.shouldApplyOverride) {
       return false;
     }
 
