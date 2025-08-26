@@ -10,3 +10,5 @@ it:
     settings:
       enabled_categories: Abilita gli estratti in categorie specifiche. Lascia sia le categorie che i le etichette vuote per mostrare gli estratti su tutti i percorsi.
       enabled_tags: Abilita gli estratti in etichette specifiche. Lascia sia le categorie che le etichette vuote per mostrare gli estratti su tutti i percorsi.
+      show_toggle: Quando gli estratti sono visibili, consenti agli utenti di disattivarli. Supportato solo nella lista di argomenti di Glimmer <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'><a/>
+  show_excerpts: Mostra estratti

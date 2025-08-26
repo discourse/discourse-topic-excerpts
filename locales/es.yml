@@ -10,3 +10,5 @@ es:
     settings:
       enabled_categories: Activa los extractos en categorías específicas. Deja en blanco tanto las categorías como las etiquetas para mostrar extractos en todas las rutas.
       enabled_tags: Activa los extractos en etiquetas específicas. Deja en blanco tanto las categorías como las etiquetas para mostrar extractos en todas las rutas.
+      show_toggle: Cuando lo extractos sean visibles, permite que los usuarios puedan desactivarlos. Solo está disponible en la <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>lista de temas «glimmer»<a/>
+  show_excerpts: Mostrar extractos

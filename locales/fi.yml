@@ -10,3 +10,5 @@ fi:
     settings:
       enabled_categories: Ota lyhennelmät käyttöön tietyillä alueilla. Jätä sekä alueet että tunnisteet tyhjiksi, jos haluat näyttää lyhennelmät kaikilla reiteillä.
       enabled_tags: Ota lyhennelmät käyttöön tietyillä tunnisteilla. Jätä sekä alueet että tunnisteet tyhjiksi, jos haluat näyttää lyhennelmät kaikilla reiteillä.
+      show_toggle: Kun lyhennelmät ovat näkyvissä, käyttäjät voivat poistaa ne käytöstä. Tuetaan vain <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>glimmer-ketjuluettelossa<a/>
+  show_excerpts: Näytä lyhennelmät
