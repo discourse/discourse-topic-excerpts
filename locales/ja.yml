@@ -10,3 +10,5 @@ ja:
     settings:
       enabled_categories: 特定のカテゴリで抜粋を有効にします。すべてのルートで抜粋を表示するには、カテゴリとタグの両方を空白のままにします。
       enabled_tags: 特定のタグで抜粋を有効にします。すべてのルートで抜粋を表示するには、カテゴリとタグの両方を空白のままにします。
+      show_toggle: 抜粋が表示されている場合に、ユーザーがそれを非表示にできるようにする。<a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>glimmer トピックリスト<a/>でのみサポートされています
+  show_excerpts: 抜粋を表示
