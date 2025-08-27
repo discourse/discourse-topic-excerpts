@@ -10,3 +10,5 @@ zh_CN:
     settings:
       enabled_categories: 在特定类别中启用摘录。将类别和标签留空以显示所有路由的摘录。
       enabled_tags: 在特定标签中启用摘录。将类别和标签留空以显示所有路由的摘录。
+      show_toggle: 当摘录可见时，允许用户将其关闭。仅在 <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>glimmer 话题列表<a/>上受支持
+  show_excerpts: 显示摘录

@@ -10,5 +10,5 @@ de:
     settings:
       enabled_categories: Aktiviere Auszüge in bestimmten Kategorien. Wähle weder Kategorien noch Schlagwörter aus, um Auszüge auf allen Routen anzuzeigen.
       enabled_tags: Aktiviere Auszüge bei bestimmten Schlagwörtern. Wähle weder Kategorien noch Schlagwörter aus, um Auszüge auf allen Routen anzuzeigen.
-      show_toggle: Wenn Auszüge sichtbar sind, erlaube Benutzern sie auszuschalten. Wird nur von der <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>„glimmer“ Themenliste<a/> unterstützt.
+      show_toggle: Wenn Auszüge sichtbar sind, erlaube Benutzern sie auszuschalten. Wird nur von der <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>„glimmer“-Themenliste<a/> unterstützt.
   show_excerpts: Auszüge anzeigen

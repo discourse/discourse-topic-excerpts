@@ -10,3 +10,5 @@ tr_TR:
     settings:
       enabled_categories: Belirli kategorilerdeki alıntıları etkinleştirin. Tüm rotalardaki alıntıları göstermek için hem kategorileri hem de etiketleri boş bırakın.
       enabled_tags: Belirli etiketlerdeki alıntıları etkinleştirin. Tüm rotalardaki alıntıları göstermek için hem kategorileri hem de etiketleri boş bırakın.
+      show_toggle: Alıntılar görünür olduğunda, kullanıcıların bunları kapatmasına izin verin. Yalnızca <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>parıltı konu listesinde<a/> desteklenir
+  show_excerpts: Alıntıları göster

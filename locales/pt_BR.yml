@@ -10,3 +10,5 @@ pt_BR:
     settings:
       enabled_categories: Ative trechos em categorias específicas. Deixe ambas as categorias e etiquetas em branco para mostrar trechos em todas as rotas.
       enabled_tags: Ative trechos em etiquetas específicas. Deixe ambas as categorias e etiquetas em branco para mostrar trechos em todas as rotas.
+      show_toggle: Quando os trechos estiverem visíveis, permita que os(as) usuários(as) os alternem para Desligado. É compatível apenas com a <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>lista de tópicos do glimmer<a/>
+  show_excerpts: Mostrar trechos

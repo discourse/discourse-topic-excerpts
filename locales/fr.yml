@@ -10,3 +10,5 @@ fr:
     settings:
       enabled_categories: Activez les extraits dans des catégories spécifiques. Laissez les catégories et les étiquettes vides pour afficher des extraits de tous les itinéraires.
       enabled_tags: Activez les extraits dans des étiquettes spécifiques. Laissez les catégories et les étiquettes vides pour afficher des extraits de tous les itinéraires.
+      show_toggle: Lorsque des extraits sont visibles, permettez aux utilisateurs de les désactiver. Uniquement disponible sur la liste de sujets <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>Glimmer<a/>
+  show_excerpts: Afficher les extraits
