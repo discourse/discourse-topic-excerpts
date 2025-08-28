@@ -10,3 +10,5 @@ ar:
     settings:
       enabled_categories: تفعيل المقتطفات في فئات محدَّدة. اترك كلًا من الفئات والوسوم فارغة لإظهار المقتطفات في جميع المسارات.
       enabled_tags: تفعيل المقتطفات في وسوم محدَّدة. اترك كلًا من الفئات والوسوم فارغة لإظهار المقتطفات في جميع المسارات.
+      show_toggle: عند ظهور المقتطفات، اسمح للمستخدمين بإيقاف تشغيلها. لا يكون ذلك مدعومًا إلا في <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>قائمة موضوعات glimmer<a/>
+  show_excerpts: عرض المقتطفات

@@ -10,3 +10,5 @@ nl:
     settings:
       enabled_categories: Schakel fragmenten in specifieke categorieën in. Laat zowel categorieën als tags leeg om fragmenten weer te geven op alle routes.
       enabled_tags: Schakel fragmenten in specifieke tags in. Laat zowel categorieën als tags leeg om fragmenten weer te geven op alle routes.
+      show_toggle: Als uitrreksels zichtbaar zijn, kunnen gebruikers deze uitschakelen. Alleen ondersteund in de <a href='https://meta.discourse.org/t/upcoming-topic-list-changes-how-to-prepare-themes-and-plugins/343404'>Glimmer-topiclijst<a/>
+  show_excerpts: Uittreksels weergeven
