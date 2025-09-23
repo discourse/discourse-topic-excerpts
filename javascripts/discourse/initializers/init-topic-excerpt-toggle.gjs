@@ -18,8 +18,8 @@ export default apiInitializer((api) => {
     "topic-list-heading-bottom",
     <template>
       {{#if site.desktopView}}<TopicExcerptToggle
-          @name={{@outletArgs.name}}
-          @bulkSelectEnabled={{@outletArgs.bulkSelectEnabled}}
+          @name={{@name}}
+          @bulkSelectEnabled={{@bulkSelectEnabled}}
         />{{/if}}
     </template>
   );
