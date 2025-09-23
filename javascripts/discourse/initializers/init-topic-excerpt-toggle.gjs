@@ -1,7 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import TopicExcerptToggle from "../components/topic-excerpt-toggle";
 
-export default apiInitializer("1.8.0", (api) => {
+export default apiInitializer((api) => {
   const site = api.container.lookup("service:site");
 
   api.renderInOutlet(
