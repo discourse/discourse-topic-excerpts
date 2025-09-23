@@ -8,8 +8,8 @@ export default apiInitializer((api) => {
     "extra-nav-item",
     <template>
       {{#if site.mobileView}}<TopicExcerptToggle
-          @name={{@outletArgs.name}}
-          @bulkSelectEnabled={{@outletArgs.bulkSelectEnabled}}
+          @name={{@name}}
+          @bulkSelectEnabled={{@bulkSelectEnabled}}
         />{{/if}}
     </template>
   );
