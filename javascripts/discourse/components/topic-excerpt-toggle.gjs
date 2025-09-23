@@ -23,11 +23,11 @@ export default class ExcerptToggle extends Component {
     }
 
     const isTopicHeader =
-      this.args.outletArgs.name === "default" ||
-      this.args.outletArgs.name === "topic.title" ||
+      this.args.name === "default" ||
+      this.args.name === "topic.title" ||
       this.site.mobileView;
 
-    return isTopicHeader && !this.args.outletArgs.bulkSelectEnabled;
+    return isTopicHeader && !this.args.bulkSelectEnabled;
   }
 
   get buttonIcon() {
