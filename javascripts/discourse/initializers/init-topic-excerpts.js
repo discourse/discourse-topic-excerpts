@@ -4,7 +4,7 @@ export default {
   name: "topic-excerpts-init",
 
   initialize() {
-    withPluginApi("1.34.0", (api) => {
+    withPluginApi((api) => {
       api.registerValueTransformer(
         "topic-list-item-expand-pinned",
         ({ value }) => {

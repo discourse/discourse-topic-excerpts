@@ -1,4 +1,3 @@
-// services/excerpt-state.js
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import Service, { service } from "@ember/service";
@@ -11,7 +10,6 @@ const enabledCategories = settings.enabled_categories
 const enabledTags = settings.enabled_tags.split("|").filter(Boolean);
 
 export default class ExcerptState extends Service {
-  @service router;
   @service discovery;
   @service site;
 

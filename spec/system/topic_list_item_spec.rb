@@ -3,9 +3,9 @@
 RSpec.describe "Viewing topic excerpts", type: :system do
   fab!(:theme) { upload_theme_component }
   fab!(:category)
-  fab!(:category_2) { Fabricate(:category) }
+  fab!(:category_2, :category)
   fab!(:tag)
-  fab!(:tag_2) { Fabricate(:tag) }
+  fab!(:tag_2, :tag)
   fab!(:topic) { Fabricate(:topic, category: category, tags: [tag]) }
   fab!(:post) { Fabricate(:post, topic: topic, cooked: "This is expanded text") }
   fab!(:topic_2) { Fabricate(:topic, category: category_2, tags: [tag_2]) }
