@@ -24,7 +24,7 @@ export default class ExcerptState extends Service {
     const overrideInCategory = enabledCategories.includes(
       this.discovery.category?.id
     );
-    const overrideInTag = enabledTags.includes(this.discovery.tag?.id);
+    const overrideInTag = enabledTags.includes(this.discovery.tag?.name);
     const overrideOnDevice = this.site.mobileView
       ? settings.show_excerpts_mobile
       : settings.show_excerpts_desktop;
