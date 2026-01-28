@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Viewing topic excerpts", type: :system do
+RSpec.describe "Viewing topic excerpts" do
   fab!(:theme) { upload_theme_component }
   fab!(:category)
   fab!(:category_2, :category)
